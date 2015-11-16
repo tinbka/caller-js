@@ -1,0 +1,25 @@
+{
+  "name": "caller-js",
+  "version": "0.1.0",
+  "authors": [
+    "Sergey Baev"
+  ],
+  "description": "Rubyish stack trace output powered by Stacktrace-js",
+  "main": "caller.js",
+  "keywords": [
+    "debug",
+    "stracktrace"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/tinbka/caller-js/caller.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "stacktrace-js": "~0.6.4",
+  }
+}
