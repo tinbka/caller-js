@@ -23,27 +23,58 @@ http://localhost/assets/app/common/services/BaseService.js:189:17 `ConfluenceSer
 
 ### Bower
 
-```shell
+```
 bower install caller-js --save
 ```
-Then add to your `index.html`:
+Include stacktrace.js and caller.js files on your page:
 
 ```html
+<script src="/bower_components/stacktracejs/stacktrace.js"></script>
 <script src="/bower_components/caller-js/caller.js"></script>
 ```
-On Rails add this to /app/assets/application.js instead
+On Rails, add this to /app/assets/javascripts/application.js instead
 
 ```
 = require stacktrace-js/stacktrace
 = require caller-js/caller
 ```
 
-Standalone, include stacktrace.js and caller.js files on your page:
+### Standalone
+
+Include stacktrace.js and caller.js files on your page:
 
 ```html
-<script src="https://rawgithub.com/stacktracejs/stacktrace.js/master/stacktrace.js"></script>
-<script src="https://rawgithub.com/caller-js/caller.js/master/caller.js"></script>
+<script src="https://rawgit.com/stacktracejs/stacktrace.js/master/stacktrace.js"></script>
+<script src="https://rawgit.com/tinbka/caller-js/master/caller.js"></script>
 ```
+
+## Usage
+
+Somewhere in a code you can log the current caller trace into the console with
+
+```javascript
+caller.log()
+```
+or get an array representing the current caller trace with
+
+```javascript
+caller.toArray()
+```
+
+To get a caller trace from your own code only, set a list of paths to your app's js sources:
+
+```javascript
+caller.config.appSources = ['/assets/app/', '/js/']
+```
+To get a full caller trace available for a browser, set it empty:
+
+```javascript
+caller.config.appSources = []
+```
+
+`['/assets/(app/|application-)']` is the default for a Rails app where `/assets/app/` directory stands for app-specific javascripts.
+
+You can skip the path filter one-off by calling `caller.log(false)` or `caller.toArray(false)`.
 
 ## License
 

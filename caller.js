@@ -6,10 +6,10 @@
     else {
         global.caller = factory();
     }
-}(this, function () {
+})(this, function () {
     var config = {
-        // Ruby on Rails; app specific files live in /assets/app
-        appSources: ["/assets/(app/|application-).+\\.js"]
+        // for a Ruby on Rails app where `/assets/app/` directory stands for app-specific javascripts
+        appSources: ['/assets/(app/|application-)']
     };
 
     /**
@@ -37,16 +37,16 @@
      * @param offset [Integer] offset in lines. Set it to 1+ when making caller-decorator functions. Default: 0
      **/
     function toArray (silent, offset) {
-        if (typeof printStackTrace != 'function')
+        if (typeof window.printStackTrace != 'function')
             return [];
             
         if (typeof offset == 'undefined')
             offset = 0;
             
-        var trace = printStackTrace();
+        var trace = window.printStackTrace();
             
         if (silent !== false) {
-            var re = new RegExp("://[^/]+(" + config.appSources.join('|') + ")\\b");
+            var re = new RegExp("://[^/]+(" + config.appSources.join('|') + ").*\\.js\\b");
             trace = trace.filter(function (line) {
                 return line.match(re);
             });
@@ -61,4 +61,4 @@
         log: log,
         toArray: toArray
     };
-)
+})
