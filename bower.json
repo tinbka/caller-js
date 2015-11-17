@@ -11,7 +11,7 @@
     "stracktrace"
   ],
   "license": "MIT",
-  "homepage": "https://github.com/tinbka/caller-js/caller.js",
+  "homepage": "https://github.com/tinbka/caller-js",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -20,6 +20,6 @@
     "tests"
   ],
   "dependencies": {
-    "stacktrace-js": "~0.6.4",
+    "stacktrace-js": "~0.6.4"
   }
 }
